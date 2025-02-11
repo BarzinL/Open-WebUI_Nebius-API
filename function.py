@@ -2,7 +2,7 @@
 title: Nebius AI Studio Pipe
 authors: barzin
 author_url: https://github.com/BarzinL
-version: 0.1.0
+version: 0.1.1
 required_open_webui_version: 0.5.10
 license: AGPL-3.0-or-later
 """
@@ -133,7 +133,7 @@ class Pipe:
         try:
             system_message, messages = pop_system_message(body["messages"])
             # Strip the prefix
-            model_name = body["model"].replace("nebius_api.", "")
+            model_name = body["model"].replace("nebius_manifold_pipe.", "")
             processed_messages = []
             for message in messages:
                 processed_content = self.process_content(
