@@ -38,6 +38,11 @@ class Pipe:
     def get_nebius_models(self):
         return [
             {
+                "id": "deepseek-ai/DeepSeek-R1",
+                "name": "DeepSeek/R1",
+                "supports_vision": False,
+            },
+            {
                 "id": "Qwen/Qwen2.5-72B-Instruct",
                 "name": "Qwen2.5 72B-Instruct",
                 "supports_vision": False,
