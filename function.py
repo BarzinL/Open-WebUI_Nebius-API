@@ -5,6 +5,7 @@ author_url: https://github.com/BarzinL
 version: 0.1.1
 required_open_webui_version: 0.5.10
 license: AGPL-3.0-or-later
+NOTE: Please set your Open-WebUI Function ID to "nebius_manifold_pipe" if this does not work.
 """
 
 import os
