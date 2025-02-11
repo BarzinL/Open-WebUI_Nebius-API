@@ -3,7 +3,7 @@ title: Nebius AI Studio Pipe
 authors: barzin
 author_url: https://github.com/BarzinL
 version: 0.1.0
-required_open_webui_version: 0.3.17
+required_open_webui_version: 0.5.10
 license: AGPL-3.0-or-later
 """
 
