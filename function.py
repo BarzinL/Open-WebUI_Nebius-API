@@ -2,10 +2,19 @@
 title: Nebius AI Studio Pipe
 authors: barzin
 author_url: https://github.com/BarzinL
-version: 0.1.1
-required_open_webui_version: 0.5.10
+funding_url: https://ko-fi.com/barzin
+version: 0.1.2
+required_open_webui_version: 0.6.5
 license: AGPL-3.0-or-later
-NOTE: Please set your Open-WebUI Function ID to "nebius_manifold_pipe" if this does not work.
+"""
+
+"""
+Changelog:
+
+0.1.2:
+- New method to construct model names that should be more compatible with how OI identifies and calls the pipe
+- Updated to retrieve the best of the Qwen3 models
+
 """
 
 import os
@@ -39,13 +48,18 @@ class Pipe:
     def get_nebius_models(self):
         return [
             {
-                "id": "deepseek-ai/DeepSeek-R1",
-                "name": "DeepSeek/R1",
+                "id": "Qwen/Qwen3-235B-A22B",
+                "name": "Qwen3 235B A22B",
                 "supports_vision": False,
             },
             {
-                "id": "Qwen/Qwen2.5-72B-Instruct",
-                "name": "Qwen2.5 72B-Instruct",
+                "id": "Qwen/Qwen3-30B-A3B",
+                "name": "Qwen3 30B A3B",
+                "supports_vision": False,
+            },
+            {
+                "id": "Qwen/Qwen3-32B",
+                "name": "Qwen3 32B",
                 "supports_vision": False,
             },
             {
@@ -61,6 +75,11 @@ class Pipe:
             {
                 "id": "meta-llama/Llama-3.3-70B-Instruct",
                 "name": "Llama 3.3 70B-Instruct",
+                "supports_vision": False,
+            },
+            {
+                "id": "deepseek-ai/DeepSeek-R1",
+                "name": "DeepSeek-R1",
                 "supports_vision": False,
             },
         ]
@@ -134,7 +153,7 @@ class Pipe:
         try:
             system_message, messages = pop_system_message(body["messages"])
             # Strip the prefix
-            model_name = body["model"].replace("nebius_manifold_pipe.", "")
+            model_name = body["model"].replace("nebius_api.", "")
             processed_messages = []
             for message in messages:
                 processed_content = self.process_content(
